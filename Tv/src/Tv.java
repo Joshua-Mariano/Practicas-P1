@@ -14,63 +14,53 @@ public class Tv {
     int volumen = 0;
     
     
-    public boolean encender(){
-   
-        if (encendido == false)
-        {
-            System.out.println("La tv esta encendiendo...");
+public boolean encender(){
+        if (encendido == false) {
+            System.out.println("La TV " + marca + " se esta encendiendo...");
             encendido = true;
+        } else {
+            System.out.println("La TV " + marca + " ya esta encendida.");
         }
-        else 
-            System.out.println("La tv ya esta encendida.");
         return encendido;
     }
-    
+
     public boolean apagar(){
-        
-        if (encendido == true)
-        {
-            System.out.println("La tv se esta apagando...");
+        if (encendido == true) {
+            System.out.println("La TV " + marca + " se esta apagando...");
             encendido = false;
+        } else {
+            System.out.println("La TV " + marca + " no esta encendida.");
         }
-        else
-            System.out.println("La tv no esta encendida.");
-        
         return encendido;
-    
     }
-    
+
     public int subirVolumen(){
-    
         if (encendido == true){
-        
             if (volumen < 100){
-                volumen ++;
-                System.out.println("Subiendo el volumen... Volumen actual:" + volumen);
+                volumen++;
+                System.out.println("[" + marca + "] Subiendo el volumen... Volumen actual: " + volumen);
+            } else {
+                System.out.println("[" + marca + "] El volumen ya esta al maximo.");
+            }
+        } else {
+            System.out.println("[" + marca + "] No se puede subir el volumen, la TV esta apagada.");
         }
-        else{
-            System.out.println("El volumen ya esta al maximo.");
-        }
-       } else {
-            System.out.println("No se puede subir el volumen, la TV esta apagada.");
-        }
-           return volumen; 
+        return volumen;
     }
-    
+
     public int bajarVolumen(){
         if (encendido == true){
             if (volumen > 0){
-                volumen = volumen - 1;
-                System.out.println("Bajando el volumen... Volumen actual: " + volumen);
-                
+                volumen--;
+                System.out.println("[" + marca + "] Bajando el volumen... Volumen actual: " + volumen);
+            } else {
+                System.out.println("[" + marca + "] El volumen ya esta al minimo.");
             }
-            else{
-                System.out.println("El volumen ya esta al minimo.");
-            }
+        } else {
+            System.out.println("[" + marca + "] No se puede bajar el volumen, la TV esta apagada.");
         }
-            else{
-                    System.out.println("No se puede bajar el volumen si la tv esta apagada.");
-            }
-            return volumen;
-        }
+        return volumen;
     }
+    
+
+}
