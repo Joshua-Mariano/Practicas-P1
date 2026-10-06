@@ -8,10 +8,19 @@
  * @author lilia
  */
 public class Tv {
-    String marca = "";
-    int pulgadas = 0;
+    String marca;
+    int pulgadas;
     boolean encendido;
-    int volumen = 0;
+    int volumen;
+
+    public Tv() {
+        this.marca = "";
+        this.pulgadas = 0;
+        this.encendido = false;
+        this.volumen = 0;
+    }
+    
+    
     
     
 public boolean encender(){
