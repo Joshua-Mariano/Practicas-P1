@@ -58,14 +58,15 @@ public class CalculadoraMatematica {
 
     /**
      * Divide el primer número entre el segundo.
-     * Usamos un IF para validar que el divisor no sea cero.
+     * Usamos un IF para validar que el divisor no sea cero; si lo es,
+     * se lanza una excepción en lugar de devolver un resultado inválido.
      *
      * @return resultado de la división
      * @throws ArithmeticException si el segundo número es cero
      */
     public double dividir() {
         if (numero2 == 0) {
-            System.out.println("No se puede dividir entre cero.");
+            throw new ArithmeticException("No se puede dividir entre cero.");
         }
         return numero1 / numero2;
     }

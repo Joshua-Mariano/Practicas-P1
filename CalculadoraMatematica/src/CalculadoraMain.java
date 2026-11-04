@@ -13,8 +13,10 @@ import java.util.Scanner;
  *
  * @author lilia
  */
+import java.util.Scanner;
+
 public class CalculadoraMain {
- 
+
     /**
      * Método principal. Muestra el menú de la calculadora en un bucle
      * do-while hasta que el usuario elija la opción 0 (Salir), y ejecuta
@@ -23,13 +25,13 @@ public class CalculadoraMain {
     public static void main(String[] args) {
         // Scanner para leer los datos que el usuario escribe en consola
         Scanner scanner = new Scanner(System.in);
- 
+
         // Objeto de la calculadora que guarda los números y hace las operaciones
         CalculadoraMatematica calc = new CalculadoraMatematica();
- 
+
         // Guarda la opción elegida por el usuario en el menú
         int opcionMenu;
- 
+
         // El do-while garantiza que el menú se muestre al menos una vez
         // y se repita hasta que el usuario elija 0
         do {
@@ -43,10 +45,10 @@ public class CalculadoraMain {
             System.out.println("0. Salir");
             System.out.println("==============================");
             System.out.println("Seleccione una opcion: ");
- 
+
             // Lee la opción elegida
             opcionMenu = scanner.nextInt();
- 
+
             // El switch ejecuta la acción según la opción elegida previamente
             switch (opcionMenu) {
                 case 1:
@@ -58,41 +60,46 @@ public class CalculadoraMain {
                     calc.ingresarNumeros(numero1, numero2);
                     System.out.println("Numeros leidos correctamente...");
                     break;
- 
+
                 case 2:
                     // Suma de los números guardados
                     System.out.println("Resultado de la suma: " + calc.sumar());
                     break;
- 
+
                 case 3:
                     // Resta de los números guardados
                     System.out.println("Resultado de la resta: " + calc.restar());
                     break;
- 
+
                 case 4:
                     // Multiplicación de los números guardados
                     System.out.println("Resultado de la multiplicacion: " + calc.multiplicar());
                     break;
- 
+
                 case 5:
-                    // División de los números guardados
-                    // (la validación de división por cero está en el método dividir())
-                    System.out.println("Resultado de la division: " + calc.dividir());
+                    // División de los números guardados.
+                    // dividir() lanza una excepción si el segundo número es cero,
+                    // así que la capturamos con try-catch para que el programa
+                    // no se cierre y se muestre un mensaje claro al usuario.
+                    try {
+                        System.out.println("Resultado de la division: " + calc.dividir());
+                    } catch (ArithmeticException e) {
+                        System.out.println("Error: " + e.getMessage());
+                    }
                     break;
- 
+
                 case 0:
                     // El bucle termina porque opcionMenu == 0
                     System.out.println("Saliendo...");
                     break;
- 
+
                 default:
                     // Cualquier otro número no es una opción válida
                     System.out.println("OPCION NO VALIDA");
             }
         } while (opcionMenu != 0);
- 
+
         // Cerramos el Scanner al terminar el programa
         scanner.close();
     }
 }
- 
